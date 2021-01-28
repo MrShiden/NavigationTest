@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">NavigationTest</string>
+    <string name="welcome">Comenzemos</string>
+    <string name="title_activity_fragments">FragmentsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_main">Main</string>
+    <string name="title_tools">Tools</string>
+    <string name="title_notes">Notes</string>
+    <string name="title_search">Search</string>
+    <string name="tv_main_fragment_gastos">GASTOS</string>
+    <string name="tv_main_productos">PRODUCTOS</string>
+    <string name="tv_main_fragment_ultima_compra">ULTIMA COMPRA</string>
+    <string name="tv_null">-----</string>
+    <string name="tv_main_fragment_tienda">TIENDAS</string>
+    <string name="tv_main_fragment_notas">NOTAS</string>
+    <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="welcome1">Bienvenido</string>
+    <string name="text_welcome">Bienvenido a la aplicacion Mi-Com esta aplicacion esta hecha para gestionar las compras que realice en el super, por medio de listas con las cuales usted podra ver el total de sus compras, pero no solo eso si no que podra comparar el precio en diferentes tiendas donde usted valla comprando para que lleve usted una relacion de todos esos productos y sus precios por medio de graficas, bueno comencemos.</string>
+    <string name="btn_step2_end">cerrar</string>
+    <string name="title_activity_listas">ListasActivity</string>
+    <!-- Strings used for fragments for navigation -->
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="text_short_title_preview">Lorem</string>
+    <string name="text_medium_title_preview">Lorem ipsum dolor duis</string>
+    <string name="text_large_title_preview">Consectetur adipiscing elit duis tristique</string>
+    <string name="text_short_content_preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="text_medium_content_preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eu non diam phasellus vestibulum lorem sed risus ultricies. In eu mi bibendum neque egestas congue quisque egestas diam.</string>
+    <string name="text_large_content_preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet mattis vulputate enim nulla aliquet porttitor. Varius duis at consectetur lorem donec massa. Fermentum dui faucibus in ornare quam viverra. Semper risus in hendrerit gravida rutrum. Penatibus et magnis dis parturient montes nascetur ridiculus. Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Tincidunt arcu non sodales neque sodales ut. Amet mattis vulputate enim nulla. Ut faucibus pulvinar elementum integer enim neque volutpat ac.</string>
+    <string name="text_number_one_digits">5</string>
+    <string name="text_number_two_digits">55</string>
+    <string name="text_number_three_digits">500</string>
+    <string name="text_number_four_digits">5470</string>
+    <string name="text_number_one_decimal">1.1</string>
+    <string name="text_number_two_decimal">55.55</string>
+    <string name="text_number_three_decimal">564.457</string>
+    <string name="text_number_four_decimal">7894.4579</string>
+</resources>

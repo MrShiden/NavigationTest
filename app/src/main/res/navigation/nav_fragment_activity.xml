@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_fragment_activity"
+    app:startDestination="@id/fragmentsActivity5">
+    <activity
+        android:id="@+id/fragmentsActivity5"
+        android:name="com.joncabdev.navigationtest.activities.FragmentsActivity"
+        android:label="activity_fragments"
+        tools:layout="@layout/activity_fragments" >
+        <action
+            android:id="@+id/action_fragmentsActivity5_to_mainActivity5"
+            app:destination="@id/mainActivity5"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:popUpTo="@id/nav_fragment_activity" />
+    </activity>
+    <activity
+        android:id="@+id/mainActivity5"
+        android:name="com.joncabdev.navigationtest.activities.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+</navigation>
