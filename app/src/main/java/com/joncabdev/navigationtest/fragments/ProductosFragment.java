@@ -1,19 +1,13 @@
 package com.joncabdev.navigationtest.fragments;
 
+import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.RectF;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,18 +18,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 import com.joncabdev.navigationtest.R;
 import com.joncabdev.navigationtest.adapters.ProductosAdapter;
 import com.joncabdev.navigationtest.clases.ConexionSQLiteHelper;
+import com.joncabdev.navigationtest.interfaces.ComunicationInterface;
 import com.joncabdev.navigationtest.interfaces.ProductosInteractionListener;
 import com.joncabdev.navigationtest.pojo.Productos;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
@@ -54,9 +46,14 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
 
     RecyclerView recyclerLista;
     ImageView ivFavorita;
+    Activity actividad;
 
     List<Productos> productosList;
     ProductosAdapter adapter;
+
+
+
+    ComunicationInterface productosInterFace;
 
 
     public ProductosFragment() {
@@ -85,8 +82,9 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //TODO 50. Como crear una Base de Datos SQLite en Android seguir con este
-        ConexionSQLiteHelper conexcion = new ConexionSQLiteHelper(getContext(),"BD_Productos", null, 1);
+        //Conexion a base de datos
+        //TODO 51. Como crear una Base de Datos SQLite en Android seguir con este
+        ConexionSQLiteHelper conexcion = new ConexionSQLiteHelper(getContext(), "BD_Productos", null, 1);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -109,6 +107,8 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
 
 
         cargardatos();
+        menuSelected(view);
+
 
 
         adapter = new ProductosAdapter(getContext(), productosList, this);
@@ -119,12 +119,24 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerLista);
 
+
+
+
+        // Inflate the layout for this fragment
+        return view;
+    }
+
+    private void menuSelected(View view) {
+
+
+        //FAB: Accion del boton FAB que manda a la activity para crear productos en la base de datos
         view.findViewById(R.id.fabProductos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                productosInterFace.gotoCreateProducto();
 
-                NavHostFragment.findNavController(ProductosFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
+               /* NavHostFragment.findNavController(ProductosFragment.this)
+                        .navigate(R.id.action_SecondFragment_to_FirstFragment);*/
 
               /*  Snackbar.make(recyclerLista, "La prueba", Snackbar.LENGTH_LONG)
                         .setAction("Nada", new View.OnClickListener() {
@@ -133,12 +145,8 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
                                 Toast.makeText(getContext(), "Nada", Toast.LENGTH_SHORT).show();
                             }
                         }).show();*/
-
             }
         });
-
-        // Inflate the layout for this fragment
-        return view;
     }
 
     //Ver mas detalles en la lista de reproduccion de youtube del mustafa
@@ -247,6 +255,17 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
 */
 
     }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof Activity){
+            actividad = (Activity) context;
+            productosInterFace = (ComunicationInterface) actividad;
+        }
+    }
+
+
 }
 
 

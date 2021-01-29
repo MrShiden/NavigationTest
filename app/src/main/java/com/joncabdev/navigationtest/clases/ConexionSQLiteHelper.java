@@ -6,9 +6,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.joncabdev.navigationtest.utilidades.Utilidades;
+
 public class ConexionSQLiteHelper extends SQLiteOpenHelper {
 
-    final String CREAR_TABLA_PRODUCTOS = "CREATE TABLE PRODUCTOS (MARCA TEXT, TIPO TEXT, CANTIDAD TEXT, MEDIDA TEXT, FAVORITO BOOLEAN, DEPARTAMENTO TEXT )";
+
 
     public ConexionSQLiteHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -17,7 +19,7 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(CREAR_TABLA_PRODUCTOS);
+        db.execSQL(Utilidades.CREAR_TABLA_PRODUCTOS);
 
     }
 

@@ -3,25 +3,13 @@ package com.joncabdev.navigationtest.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.navigation.NavHost;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.joncabdev.navigationtest.R;
-import com.joncabdev.navigationtest.adapters.ProductosAdapter;
 import com.joncabdev.navigationtest.databinding.ActivityFragmentsBinding;
-import com.joncabdev.navigationtest.fragments.FirstFragment;
-import com.joncabdev.navigationtest.interfaces.ProductosInteractionListener;
-import com.joncabdev.navigationtest.pojo.Productos;
+import com.joncabdev.navigationtest.interfaces.ComunicationInterface;
 
-public class FragmentsActivity extends AppCompatActivity {
+public class FragmentsActivity extends AppCompatActivity implements ComunicationInterface {
     ActivityFragmentsBinding binding;
 
 
@@ -52,5 +40,15 @@ public class FragmentsActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void gotoCreateProducto() {
+
+        Intent i = new Intent(this , RegisterProductsActivity.class);
+
+        startActivity(i);
+
+    }
+
 
 }
+

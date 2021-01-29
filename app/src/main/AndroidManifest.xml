@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NavigationTest">
+        <activity android:name=".activities.RegisterProductsActivity"></activity>
         <activity
             android:name=".activities.FragmentsActivity"
             android:label="@string/title_activity_fragments"
-            android:theme="@style/Theme.NavigationTest.NoActionBar"></activity>
+            android:theme="@style/Theme.NavigationTest.NoActionBar" />
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -44,4 +44,7 @@
     <string name="text_number_two_decimal">55.55</string>
     <string name="text_number_three_decimal">564.457</string>
     <string name="text_number_four_decimal">7894.4579</string>
+    <string name="btn_cancelar">Cancelar</string>
+    <string name="btn_aceptar">Aceptar</string>
+    <string name="btn_guardar">Guardar</string>
 </resources>
