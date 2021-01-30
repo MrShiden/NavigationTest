@@ -8,6 +8,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.joncabdev.navigationtest.R;
+import com.joncabdev.navigationtest.activities.FragmentsActivity;
 import com.joncabdev.navigationtest.adapters.ProductosAdapter;
 import com.joncabdev.navigationtest.clases.ConexionSQLiteHelper;
 import com.joncabdev.navigationtest.interfaces.ComunicationInterface;
@@ -94,6 +96,11 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        //Codigo para habilitar las herramientas del toolbar en este caso se habilita el back button
+       /* ((FragmentsActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        ((FragmentsActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);*/
+        ((FragmentsActivity) getActivity()).getSupportActionBar().setTitle("Lista");
 
 
         View view = inflater.inflate(R.layout.fragment_productos, container, false);
@@ -192,6 +199,8 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
 
         }
 
+
+
         @Override
         public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 
@@ -264,6 +273,8 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
             productosInterFace = (ComunicationInterface) actividad;
         }
     }
+
+
 
 
 }

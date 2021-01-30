@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.button.MaterialButton;
 import com.joncabdev.navigationtest.databinding.ActivityMainBinding;
 
+
 public class MainActivity extends AppCompatActivity {
     
     ActivityMainBinding binding;

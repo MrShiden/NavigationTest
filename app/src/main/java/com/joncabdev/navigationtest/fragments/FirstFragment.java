@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.joncabdev.navigationtest.R;
+import com.joncabdev.navigationtest.activities.FragmentsActivity;
 
 public class FirstFragment extends Fragment {
 
@@ -18,6 +19,9 @@ public class FirstFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+
+
+
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_first, container, false);
     }

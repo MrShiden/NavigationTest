@@ -1,6 +1,7 @@
 package com.joncabdev.navigationtest.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,8 @@ import com.joncabdev.navigationtest.databinding.ActivityRegisterProductsBinding;
 
 public class RegisterProductsActivity extends AppCompatActivity {
 
+
+
     ActivityRegisterProductsBinding binding;
 
     @Override
@@ -18,6 +21,8 @@ public class RegisterProductsActivity extends AppCompatActivity {
         binding= ActivityRegisterProductsBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+
 
         onItemSelected();
     }
