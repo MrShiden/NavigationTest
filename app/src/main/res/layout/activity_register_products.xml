@@ -27,6 +27,7 @@
         app:layout_constraintTop_toBottomOf="@id/icon_favorite">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_marca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lines="1"

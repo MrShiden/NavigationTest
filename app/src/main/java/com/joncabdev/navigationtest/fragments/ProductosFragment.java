@@ -100,7 +100,7 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
         //Codigo para habilitar las herramientas del toolbar en este caso se habilita el back button
        /* ((FragmentsActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ((FragmentsActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);*/
-        ((FragmentsActivity) getActivity()).getSupportActionBar().setTitle("Lista");
+//        ((FragmentsActivity) getActivity()).getSupportActionBar().setTitle("Lista");
 
 
         View view = inflater.inflate(R.layout.fragment_productos, container, false);
