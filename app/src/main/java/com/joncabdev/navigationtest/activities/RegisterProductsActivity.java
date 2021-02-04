@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.joncabdev.navigationtest.R;
 import com.joncabdev.navigationtest.clases.ConexionSQLiteHelper;
 import com.joncabdev.navigationtest.databinding.ActivityRegisterProductsBinding;
+import com.joncabdev.navigationtest.db.dao.ProductosDao;
 import com.joncabdev.navigationtest.utilidades.Utilidades;
 
 public class RegisterProductsActivity extends AppCompatActivity {
@@ -50,6 +51,8 @@ public class RegisterProductsActivity extends AppCompatActivity {
             public void onClick(View v) {
                registrarProductos();
 
+
+
             }
         });
 
@@ -76,6 +79,9 @@ public class RegisterProductsActivity extends AppCompatActivity {
         values.put(Utilidades.CANTIDAD,binding.textCantidad.getText().toString());
         values.put(Utilidades.MEDIDA,binding.textMedida.getText().toString());
         values.put(Utilidades.PRECIO,binding.textPrecio.getText().toString());
+
+
+
 
         Long idResultados = db.insert(Utilidades.TABLA_PRODUCTOS,Utilidades.ID_PRODUCTO,values);
 

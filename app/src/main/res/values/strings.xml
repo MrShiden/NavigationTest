@@ -47,4 +47,6 @@
     <string name="btn_cancelar">Cancelar</string>
     <string name="btn_aceptar">Aceptar</string>
     <string name="btn_guardar">Guardar</string>
+    <string name="dialog_create_product">Introduzca los datos para crear el producto</string>
+    <string name="dialog_create_product_title">Crear nuevo producto</string>
 </resources>

@@ -31,6 +31,8 @@ public class ProductoRepository {
 
     }
 
+
+
     private static class insertAsyncTask extends AsyncTask<ProductosEntity, Void,Void>{
         private  ProductosDao productosDaoAsyncTask;
 

@@ -9,6 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +28,7 @@ import com.joncabdev.navigationtest.R;
 import com.joncabdev.navigationtest.activities.FragmentsActivity;
 import com.joncabdev.navigationtest.adapters.ProductosAdapter;
 import com.joncabdev.navigationtest.clases.ConexionSQLiteHelper;
+import com.joncabdev.navigationtest.db.entity.ProductosEntity;
 import com.joncabdev.navigationtest.interfaces.ComunicationInterface;
 import com.joncabdev.navigationtest.interfaces.ProductosInteractionListener;
 import com.joncabdev.navigationtest.pojo.Productos;
@@ -49,10 +54,12 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
     RecyclerView recyclerLista;
     ImageView ivFavorita;
     Activity actividad;
-
-    List<Productos> productosList;
+    // Original
+    //    List<Productos> productosList;
+    List<ProductosEntity> productosList;
     ProductosAdapter adapter;
 
+    NuevoProductoDialogViewModel productoViewModel;
 
 
     ComunicationInterface productosInterFace;
@@ -113,13 +120,13 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
         recyclerLista.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        cargardatos();
+//        cargardatos();
+        lanzarViewModel();
         menuSelected(view);
 
 
-
         adapter = new ProductosAdapter(getContext(), productosList, this);
-        productosList.get(4);
+//        productosList.get(4);
         recyclerLista.setAdapter(adapter);
 
 
@@ -127,10 +134,22 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
         itemTouchHelper.attachToRecyclerView(recyclerLista);
 
 
-
-
         // Inflate the layout for this fragment
         return view;
+    }
+
+    private void lanzarViewModel() {
+
+        productoViewModel = ViewModelProviders.of(getActivity()).get(NuevoProductoDialogViewModel.class);
+        productoViewModel.getAllProducts().observe(getActivity(), new Observer<List<ProductosEntity>>() {
+            @Override
+            public void onChanged(List<ProductosEntity> productosEntities) {
+                adapter.setNuevosProductos(productosEntities);
+
+            }
+        });
+
+
     }
 
     private void menuSelected(View view) {
@@ -140,7 +159,10 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
         view.findViewById(R.id.fabProductos).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                productosInterFace.gotoCreateProducto();
+//                productosInterFace.gotoCreateProducto();
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+                NuevoProductoDialogFragment dialogNuevoProducto = new NuevoProductoDialogFragment();
+                dialogNuevoProducto.show(fm,"NuevoProductoDialogFragment");
 
                /* NavHostFragment.findNavController(ProductosFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);*/
@@ -158,7 +180,8 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
 
     //Ver mas detalles en la lista de reproduccion de youtube del mustafa
 
-    Productos productoRemovido = null;
+    //    Productos productoRemovido = null;
+    ProductosEntity productoRemovido = null;
 
     // Se le puede implementar ItemTouchHelper.RIGHT para que tenga la accion de deplazarse a la derecha
     ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
@@ -200,7 +223,6 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
         }
 
 
-
         @Override
         public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 
@@ -216,7 +238,7 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
     };
 
 
-    private void cargardatos() {
+  /*  private void cargardatos() {
 
         productosList.add(new Productos("1", "Frutas", "25", "kg", false, "Farmacia"));
         productosList.add(new Productos("2", "Huevos", "25.4", "Kg", true, "Abarrotes"));
@@ -229,7 +251,7 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
         productosList.add(new Productos("9", "Frutas", "25", "kg", false, "Farmacia"));
 
 
-    }
+    }*/
 
 
     @Override
@@ -268,13 +290,11 @@ public class ProductosFragment extends Fragment implements ProductosInteractionL
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if (context instanceof Activity){
+        if (context instanceof Activity) {
             actividad = (Activity) context;
             productosInterFace = (ComunicationInterface) actividad;
         }
     }
-
-
 
 
 }
